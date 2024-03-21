@@ -38,3 +38,18 @@ if __name__ == '__main__':
     if start > end:
         start, end = end, start
     print("Prime numbers between {} and {}: {}".format(start, end, primes))
+
+
+    class TestPrimeGenerator(unittest.TestCase):
+    
+    def test_is_prime(self):
+        self.assertFalse(is_prime(1))
+        self.assertTrue(is_prime(2))
+        self.assertTrue(is_prime(3))
+        self.assertFalse(is_prime(4))
+    
+    def test_prime_generator(self):
+        self.assertEqual(prime_generator(1, 10), [2, 3, 5, 7])
+        self.assertEqual(prime_generator(20, 30), [23, 29])
+        self.assertEqual(prime_generator(30, 20), [23, 29])
+        self.assertEqual(prime_generator(7900, 7920), [7901, 7907, 7919])
