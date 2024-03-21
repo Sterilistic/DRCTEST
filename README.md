@@ -15,10 +15,15 @@ a python generator that returns primes on your own.
 The code should handle inverse ranges such that 1-10 and 10-1 are equivalent.
 • Ensure that you run a test against the range 7900 and 7920 (valid primes are
 7901, 7907, 7919).
+
 Generator function signature
+
 `def prime_generator(start:int , end:int)`
+
 Primality checker signature
+
 `def is_prime(value:int)`
+
 
 Definition (from wikipedia):
 In mathematics, a prime number (or a prime) is a natural number which has exactly
