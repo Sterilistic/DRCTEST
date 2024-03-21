@@ -47,6 +47,19 @@ if __name__ == '__main__':
         self.assertTrue(is_prime(2))
         self.assertTrue(is_prime(3))
         self.assertFalse(is_prime(4))
+        self.assertTrue(is_prime(5))
+        self.assertFalse(is_prime(6))
+        self.assertTrue(is_prime(7))
+        self.assertFalse(is_prime(8))
+        self.assertFalse(is_prime(9))
+        self.assertTrue(is_prime(11))
+        # Test edge cases
+        self.assertFalse(is_prime(0))
+        self.assertFalse(is_prime(-1))
+        self.assertFalse(is_prime(-2))
+        self.assertFalse(is_prime(32))
+        self.assertFalse(is_prime(33))
+        self.assertFalse(is_prime(100))
     
     def test_prime_generator(self):
         self.assertEqual(prime_generator(1, 10), [2, 3, 5, 7])
