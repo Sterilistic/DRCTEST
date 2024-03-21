@@ -18,29 +18,7 @@ def prime_generator(start, end):
             primes.append(num)
     return primes
 
-
-if __name__ == '__main__':
-
-    if len(sys.argv) != 3:
-        print("Usage: python prime_generator.py <start> <end>")
-        sys.exit(1)
-    
-    start = int(sys.argv[1])
-    end = int(sys.argv[2])
-
-    if start < 0 or end < 0:
-        print("Invalid range. Start and end must be positive integers.")
-        sys.exit(1)
-    
-
-    primes = prime_generator(start, end)
-
-    if start > end:
-        start, end = end, start
-    print("Prime numbers between {} and {}: {}".format(start, end, primes))
-
-
-    class TestPrimeGenerator(unittest.TestCase):
+class TestPrimeGenerator(unittest.TestCase):
     
     def test_is_prime(self):
         self.assertFalse(is_prime(1))
@@ -66,3 +44,25 @@ if __name__ == '__main__':
         self.assertEqual(prime_generator(20, 30), [23, 29])
         self.assertEqual(prime_generator(30, 20), [23, 29])
         self.assertEqual(prime_generator(7900, 7920), [7901, 7907, 7919])
+
+if __name__ == '__main__':
+
+    if len(sys.argv) != 3:
+        print("Usage: python prime_generator.py <start> <end>")
+        sys.exit(1)
+    
+    start = int(sys.argv[1])
+    end = int(sys.argv[2])
+
+    if start < 0 or end < 0:
+        print("Invalid range. Start and end must be positive integers.")
+        sys.exit(1)
+    
+
+    primes = prime_generator(start, end)
+
+    if start > end:
+        start, end = end, start
+    print("Prime numbers between {} and {}: {}".format(start, end, primes))
+
+
