@@ -10,6 +10,8 @@ def is_prime(n):
     return True
 
 def prime_generator(start, end):
+    if start > end:
+        start, end = end, start  # Swap start and end if start is greater than end
     primes = []
     for num in range(start, end + 1):
         if is_prime(num):
