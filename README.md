@@ -38,19 +38,23 @@ Prime numbers between 14 and 19: [17, 19]
 
 Test coverage check, 
 ```
-pushpendrakumartiwari@Pushpendras-MacBook-Pro DRCTEST % coverage run -m pytest prime_generator.py -v
+pushpendrakumartiwari@Pushpendras-MacBook-Pro DRCTEST % coverage run -m pytest test_interface_prime_generator.py -v 
 ============================================================== test session starts ===============================================================
 platform darwin -- Python 3.10.8, pytest-8.1.1, pluggy-1.4.0 -- /usr/local/opt/python@3.10/bin/python3.10
 cachedir: .pytest_cache
 rootdir: /Users/pushpendrakumartiwari/work/DRCTEST
 plugins: anyio-3.6.2
-collected 5 items                                                                                                                                
+collected 9 items                                                                                                                                
 
-prime_generator.py::TestPrimeGenerator::test_is_prime_with_non_prime_numbers PASSED                                                        [ 20%]
-prime_generator.py::TestPrimeGenerator::test_is_prime_with_prime_numbers PASSED                                                            [ 40%]
-prime_generator.py::TestPrimeGenerator::test_prime_generator_with_empty_range PASSED                                                       [ 60%]
-prime_generator.py::TestPrimeGenerator::test_prime_generator_with_range PASSED                                                             [ 80%]
-prime_generator.py::TestPrimeGenerator::test_prime_generator_with_single_prime_number PASSED                                               [100%]
+test_interface_prime_generator.py::TestPrimeGenerator::test_generate_primes_with_empty_range PASSED                                        [ 11%]
+test_interface_prime_generator.py::TestPrimeGenerator::test_generate_primes_with_range PASSED                                              [ 22%]
+test_interface_prime_generator.py::TestPrimeGenerator::test_generate_primes_with_single_prime_number PASSED                                [ 33%]
+test_interface_prime_generator.py::TestPrimeGenerator::test_is_prime_with_non_prime_numbers PASSED                                         [ 44%]
+test_interface_prime_generator.py::TestPrimeGenerator::test_is_prime_with_prime_numbers PASSED                                             [ 55%]
+test_interface_prime_generator.py::TestUserInput::test_insufficient_arguments PASSED                                                       [ 66%]
+test_interface_prime_generator.py::TestUserInput::test_invalid_input_negative_numbers PASSED                                               [ 77%]
+test_interface_prime_generator.py::TestUserInput::test_invalid_input_non_numeric PASSED                                                    [ 88%]
+test_interface_prime_generator.py::TestUserInput::test_valid_input PASSED                                                                  [100%]
 
-=============================================================== 5 passed in 0.03s ================================================================
+=============================================================== 9 passed in 0.04s ================================================================
 ```
