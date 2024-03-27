@@ -30,3 +30,27 @@ In mathematics, a prime number (or a prime) is a natural number which has exactl
 two distinct natural number divisors: 1 and itself. The first twenty-six prime numbers are:
 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89,
 97, 101
+
+How to run, 
+`pushpendrakumartiwari@Pushpendras-MacBook-Pro DRCTEST % python3 prime_generator.py 14 19
+Prime numbers between 14 and 19: [17, 19]
+`
+
+Test coverage check, 
+```
+pushpendrakumartiwari@Pushpendras-MacBook-Pro DRCTEST % coverage run -m pytest prime_generator.py -v
+============================================================== test session starts ===============================================================
+platform darwin -- Python 3.10.8, pytest-8.1.1, pluggy-1.4.0 -- /usr/local/opt/python@3.10/bin/python3.10
+cachedir: .pytest_cache
+rootdir: /Users/pushpendrakumartiwari/work/DRCTEST
+plugins: anyio-3.6.2
+collected 5 items                                                                                                                                
+
+prime_generator.py::TestPrimeGenerator::test_is_prime_with_non_prime_numbers PASSED                                                        [ 20%]
+prime_generator.py::TestPrimeGenerator::test_is_prime_with_prime_numbers PASSED                                                            [ 40%]
+prime_generator.py::TestPrimeGenerator::test_prime_generator_with_empty_range PASSED                                                       [ 60%]
+prime_generator.py::TestPrimeGenerator::test_prime_generator_with_range PASSED                                                             [ 80%]
+prime_generator.py::TestPrimeGenerator::test_prime_generator_with_single_prime_number PASSED                                               [100%]
+
+=============================================================== 5 passed in 0.03s ================================================================
+```
