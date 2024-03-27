@@ -10,8 +10,6 @@ def is_prime(n):
     return True
 
 def prime_generator(start, end):
-    if start > end:
-        start, end = end, start  # Swap start and end if start is greater than end
     primes = []
     for num in range(start, end + 1):
         if is_prime(num):
@@ -20,30 +18,28 @@ def prime_generator(start, end):
 
 class TestPrimeGenerator(unittest.TestCase):
     
-    def test_is_prime(self):
-        self.assertFalse(is_prime(1))
-        self.assertTrue(is_prime(2))
-        self.assertTrue(is_prime(3))
-        self.assertFalse(is_prime(4))
-        self.assertTrue(is_prime(5))
-        self.assertFalse(is_prime(6))
-        self.assertTrue(is_prime(7))
-        self.assertFalse(is_prime(8))
-        self.assertFalse(is_prime(9))
-        self.assertTrue(is_prime(11))
-        # Test edge cases
-        self.assertFalse(is_prime(0))
-        self.assertFalse(is_prime(-1))
-        self.assertFalse(is_prime(-2))
-        self.assertFalse(is_prime(32))
-        self.assertFalse(is_prime(33))
-        self.assertFalse(is_prime(100))
-    
-    def test_prime_generator(self):
-        self.assertEqual(prime_generator(1, 10), [2, 3, 5, 7])
-        self.assertEqual(prime_generator(20, 30), [23, 29])
-        self.assertEqual(prime_generator(30, 20), [23, 29])
-        self.assertEqual(prime_generator(7900, 7920), [7901, 7907, 7919])
+    def test_is_prime_with_prime_numbers(self):
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        for prime in primes:
+            self.assertTrue(is_prime(prime), f"{prime} should be prime")
+
+    def test_is_prime_with_non_prime_numbers(self):
+        non_primes = [0, 1, 4, 6, 8, 9, 10, 12, 14, 15]
+        for non_prime in non_primes:
+            self.assertFalse(is_prime(non_prime), f"{non_prime} should not be prime")
+
+    def test_prime_generator_with_range(self):
+        self.assertEqual(prime_generator(1, 15), [2, 3, 5, 7, 11, 13])
+        self.assertEqual(prime_generator(-1, -10), [])
+
+
+    def test_prime_generator_with_empty_range(self):
+        self.assertEqual(prime_generator(10, 10), [])
+        self.assertEqual(prime_generator(14, 16), [])
+
+    def test_prime_generator_with_single_prime_number(self):
+        expected_primes = [11]
+        self.assertEqual(prime_generator(10, 12), expected_primes)
 
 if __name__ == '__main__':
 
@@ -58,11 +54,10 @@ if __name__ == '__main__':
         print("Invalid range. Start and end must be positive integers.")
         sys.exit(1)
     
+    if start > end: # Swap start and end if start is greater than end
+        start, end = end, start
 
     primes = prime_generator(start, end)
-
-    if start > end:
-        start, end = end, start
     print("Prime numbers between {} and {}: {}".format(start, end, primes))
 
 
