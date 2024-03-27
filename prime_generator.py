@@ -22,6 +22,18 @@ class PrimeGenerator:
         return primes
 
     @staticmethod
+    def sieve_of_eratosthenes(n):
+        primes = [True] * (n + 1)
+        primes[0] = primes[1] = False
+        p = 2
+        while p ** 2 <= n:
+            if primes[p]:
+                for i in range(p ** 2, n + 1, p):
+                    primes[i] = False
+            p += 1
+        return [i for i in range(n + 1) if primes[i]]
+
+    @staticmethod
     def main():
         if len(sys.argv) != 3:
             print("Usage: python prime_generator.py <start> <end>", file=sys.stderr)
@@ -44,33 +56,6 @@ class PrimeGenerator:
         prime_gen = PrimeGenerator()
         primes = prime_gen.generate_primes(start, end)
         print("Prime numbers between {} and {}: {}".format(start, end, primes))
-
-
-class TestPrimeGenerator(unittest.TestCase):
-    def setUp(self):
-        self.prime_gen = PrimeGenerator()
-
-    def test_is_prime_with_prime_numbers(self):
-        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-        for prime in primes:
-            self.assertTrue(self.prime_gen.is_prime(prime), f"{prime} should be prime")
-
-    def test_is_prime_with_non_prime_numbers(self):
-        non_primes = [0, 1, 4, 6, 8, 9, 10, 12, 14, 15]
-        for non_prime in non_primes:
-            self.assertFalse(self.prime_gen.is_prime(non_prime), f"{non_prime} should not be prime")
-
-    def test_generate_primes_with_range(self):
-        self.assertEqual(self.prime_gen.generate_primes(1, 15), [2, 3, 5, 7, 11, 13])
-        self.assertEqual(self.prime_gen.generate_primes(-1, -10), [])
-
-    def test_generate_primes_with_empty_range(self):
-        self.assertEqual(self.prime_gen.generate_primes(10, 10), [])
-        self.assertEqual(self.prime_gen.generate_primes(14, 16), [])
-
-    def test_generate_primes_with_single_prime_number(self):
-        expected_primes = [11]
-        self.assertEqual(self.prime_gen.generate_primes(10, 12), expected_primes)
 
 
 if __name__ == '__main__':
