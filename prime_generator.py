@@ -22,18 +22,6 @@ class PrimeGenerator:
         return primes
 
     @staticmethod
-    def sieve_of_eratosthenes(n):
-        primes = [True] * (n + 1)
-        primes[0] = primes[1] = False
-        p = 2
-        while p ** 2 <= n:
-            if primes[p]:
-                for i in range(p ** 2, n + 1, p):
-                    primes[i] = False
-            p += 1
-        return [i for i in range(n + 1) if primes[i]]
-
-    @staticmethod
     def main():
         if len(sys.argv) != 3:
             print("Usage: python prime_generator.py <start> <end>", file=sys.stderr)
